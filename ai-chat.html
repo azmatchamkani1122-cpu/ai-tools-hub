@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Chat | AI Tools Hub</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+
+            background:
+                radial-gradient(circle at top right, #123b61 0%, transparent 35%),
+                linear-gradient(135deg, #04111f, #071f38);
+
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+
+        header {
+            width: 100%;
+            padding: 18px 7%;
+
+            background: rgba(3, 15, 29, 0.95);
+            border-bottom: 1px solid rgba(32, 217, 197, 0.2);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #20d9c5;
+        }
+
+        .home-btn {
+            text-decoration: none;
+            color: white;
+            background: #0d355c;
+            padding: 10px 18px;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .home-btn:hover {
+            background: #20d9c5;
+            color: #04111f;
+        }
+
+        /* MAIN */
+
+        .container {
+            width: 92%;
+            max-width: 950px;
+            margin: 45px auto;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .heading h1 {
+            font-size: 42px;
+            color: #20d9c5;
+            margin-bottom: 10px;
+        }
+
+        .heading p {
+            color: #aebfd0;
+            font-size: 17px;
+        }
+
+        /* CHAT */
+
+        .chat-container {
+            background: rgba(8, 35, 61, 0.95);
+            border: 1px solid rgba(32, 217, 197, 0.18);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+        }
+
+        /* CHAT HEADER */
+
+        .chat-header {
+            padding: 18px 22px;
+            background: #0b2a48;
+            border-bottom: 1px solid #16466b;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ai-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #20d9c5;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #20d9c5;
+        }
+
+        .clear-btn {
+            border: none;
+            background: #183d5d;
+            color: white;
+            padding: 8px 13px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .clear-btn:hover {
+            background: #254f70;
+        }
+
+        /* MESSAGES */
+
+        #messages {
+            height: 430px;
+            overflow-y: auto;
+            padding: 25px;
+        }
+
+        .message {
+            margin-bottom: 18px;
+            display: flex;
+        }
+
+        .message.user {
+            justify-content: flex-end;
+        }
+
+        .message.ai {
+            justify-content: flex-start;
+        }
+
+        .bubble {
+            max-width: 80%;
+            padding: 14px 17px;
+            border-radius: 13px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .user .bubble {
+            background: #20d9c5;
+            color: #04111f;
+            border-bottom-right-radius: 3px;
+        }
+
+        .ai .bubble {
+            background: #102f4e;
+            color: #eaf4ff;
+            border-bottom-left-radius: 3px;
+        }
+
+        /* INPUT AREA */
+
+        .input-area {
+            padding: 18px;
+            background: #061b31;
+            border-top: 1px solid #16466b;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        textarea {
+            flex: 1;
+            min-height: 55px;
+            max-height: 150px;
+            resize: vertical;
+
+            background: #09243d;
+            color: white;
+
+            border: 1px solid #1a4d72;
+            border-radius: 10px;
+
+            padding: 15px;
+
+            font-size: 15px;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #20d9c5;
+        }
+
+        textarea::placeholder {
+            color: #8298ad;
+        }
+
+        .send-btn {
+            min-width: 110px;
+            border: none;
+            border-radius: 10px;
+
+            background: #20d9c5;
+            color: #04111f;
+
+            font-weight: bold;
+            font-size: 15px;
+
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 30px 15px;
+            color: #7890a6;
+            font-size: 14px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 650px) {
+
+            header {
+                padding: 15px 5%;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .home-btn {
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .heading h1 {
+                font-size: 32px;
+            }
+
+            .heading p {
+                font-size: 15px;
+            }
+
+            #messages {
+                height: 400px;
+                padding: 18px;
+            }
+
+            .bubble {
+                max-width: 88%;
+            }
+
+            .input-row {
+                flex-direction: column;
+            }
+
+            .send-btn {
+                height: 50px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <div class="logo">
+            AI Tools Hub
+        </div>
+
+        <a href="index.html" class="home-btn">
+            ← Home
+        </a>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="container">
+
+        <div class="heading">
+
+            <h1>🤖 AI Chat</h1>
+
+            <p>
+                Ask anything and chat with your AI assistant.
+            </p>
+
+        </div>
+
+
+        <div class="chat-container">
+
+            <!-- CHAT HEADER -->
+
+            <div class="chat-header">
+
+                <div class="ai-status">
+
+                    <div class="status-dot"></div>
+
+                    AI Assistant
+
+                </div>
+
+                <button
+                    class="clear-btn"
+                    onclick="clearChat()">
+
+                    Clear Chat
+
+                </button>
+
+            </div>
+
+
+            <!-- MESSAGES -->
+
+            <div id="messages">
+
+                <div class="message ai">
+
+                    <div class="bubble">
+
+                        👋 Hello! I'm your AI assistant.
+
+                        Ask me anything and I'll try to help you.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- INPUT -->
+
+            <div class="input-area">
+
+                <div class="input-row">
+
+                    <textarea
+                        id="question"
+                        placeholder="Type your message here..."
+                        onkeydown="handleEnter(event)"
+                    ></textarea>
+
+                    <button
+                        id="sendButton"
+                        class="send-btn"
+                        onclick="sendMessage()">
+
+                        Send ➤
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        © 2026 AI Tools Hub. All Rights Reserved.
+
+    </footer>
+
+
+    <script>
+
+        /* SEND MESSAGE */
+
+        async function sendMessage() {
+
+            const input =
+                document.getElementById("question");
+
+            const messages =
+                document.getElementById("messages");
+
+            const sendButton =
+                document.getElementById("sendButton");
+
+
+            const question =
+                input.value.trim();
+
+
+            if (!question) {
+                return;
+            }
+
+
+            /* USER MESSAGE */
+
+            addMessage(question, "user");
+
+            input.value = "";
+
+
+            /* DISABLE BUTTON */
+
+            sendButton.disabled = true;
+            sendButton.innerText = "Thinking...";
+
+
+            /* LOADING MESSAGE */
+
+            const loading =
+                document.createElement("div");
+
+            loading.className = "message ai";
+            loading.id = "loadingMessage";
+
+            loading.innerHTML = `
+                <div class="bubble">
+                    AI is thinking...
+                </div>
+            `;
+
+            messages.appendChild(loading);
+
+            scrollToBottom();
+
+
+            try {
+
+                /* SEND TO NODE.JS SERVER */
+
+                const response =
+                    await fetch("/api/chat", {
+
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            message: question
+                        })
+
+                    });
+
+
+                const data =
+                    await response.json();
+
+
+                /* REMOVE LOADING */
+
+                const loadingMessage =
+                    document.getElementById(
+                        "loadingMessage"
+                    );
+
+                if (loadingMessage) {
+                    loadingMessage.remove();
+                }
+
+
+                /* SHOW REAL ERROR */
+
+                if (!response.ok) {
+
+                    addMessage(
+                        "❌ Gemini Error: " +
+                        (data.error ||
+                        "Unknown server error"),
+                        "ai"
+                    );
+
+                    console.error(
+                        "Server Error:",
+                        data
+                    );
+
+                }
+
+                /* AI RESPONSE */
+
+                else if (data.reply) {
+
+                    addMessage(
+                        data.reply,
+                        "ai"
+                    );
+
+                }
+
+                else {
+
+                    addMessage(
+                        "❌ Server ne AI response nahi diya.",
+                        "ai"
+                    );
+
+                }
+
+
+            } catch (error) {
+
+                console.error(
+                    "Connection Error:",
+                    error
+                );
+
+
+                const loadingMessage =
+                    document.getElementById(
+                        "loadingMessage"
+                    );
+
+                if (loadingMessage) {
+                    loadingMessage.remove();
+                }
+
+
+                addMessage(
+                    "❌ Server se connection nahi ho raha.",
+                    "ai"
+                );
+
+            }
+
+
+            /* ENABLE BUTTON */
+
+            sendButton.disabled = false;
+
+            sendButton.innerText = "Send ➤";
+
+            input.focus();
+
+        }
+
+
+        /* ADD MESSAGE */
+
+        function addMessage(text, type) {
+
+            const messages =
+                document.getElementById("messages");
+
+            const message =
+                document.createElement("div");
+
+            message.className =
+                "message " + type;
+
+            const bubble =
+                document.createElement("div");
+
+            bubble.className = "bubble";
+
+            bubble.innerText = text;
+
+            message.appendChild(bubble);
+
+            messages.appendChild(message);
+
+            scrollToBottom();
+
+        }
+
+
+        /* SCROLL */
+
+        function scrollToBottom() {
+
+            const messages =
+                document.getElementById("messages");
+
+            messages.scrollTop =
+                messages.scrollHeight;
+
+        }
+
+
+        /* ENTER KEY */
+
+        function handleEnter(event) {
+
+            if (
+                event.key === "Enter" &&
+                !event.shiftKey
+            ) {
+
+                event.preventDefault();
+
+                sendMessage();
+
+            }
+
+        }
+
+
+        /* CLEAR CHAT */
+
+        function clearChat() {
+
+            const messages =
+                document.getElementById("messages");
+
+            messages.innerHTML = `
+
+                <div class="message ai">
+
+                    <div class="bubble">
+
+                        👋 Chat cleared.
+
+                        How can I help you?
+
+                    </div>
+
+                </div>
+
+            `;
+
+        }
+
+    </script>
+
+</body>
+</html>

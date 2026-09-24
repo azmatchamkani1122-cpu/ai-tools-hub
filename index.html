@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,52 +8,52 @@
     <title>AI Tools Hub | Powerful AI Tools</title>
 
     <meta name="description"
-          content="AI Tools Hub provides powerful AI tools for chatting, writing, summarizing, translating, coding and generating ideas.">
+          content="AI Tools Hub - Powerful AI tools for chatting, writing, summarizing, translation, coding and ideas.">
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
 
     <!-- Bootstrap Icons -->
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <style>
 
         :root {
             --primary: #20d9c4;
-            --primary-dark: #13ad9d;
-            --bg: #050b14;
-            --card: #0b1524;
-            --border: rgba(255,255,255,0.08);
+            --primary-dark: #13b9a8;
+            --dark: #050b14;
+            --card: #0b1727;
+            --border: rgba(255,255,255,0.09);
             --text: #f5f8fc;
-            --muted: #9eacbd;
+            --muted: #9aaabc;
         }
 
-        * {
+        html {
             scroll-behavior: smooth;
         }
 
         body {
-            background:
-                radial-gradient(circle at 10% 10%, rgba(32,217,196,0.08), transparent 30%),
-                radial-gradient(circle at 90% 20%, rgba(46,120,255,0.08), transparent 30%),
-                var(--bg);
+            background: var(--dark);
             color: var(--text);
-            font-family: Inter, Arial, sans-serif;
+            font-family: Arial, sans-serif;
         }
 
         /* NAVBAR */
 
         .navbar {
-            background: rgba(5,11,20,0.82);
+            background: rgba(5,11,20,0.88);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border);
         }
 
         .navbar-brand {
             color: white !important;
-            font-weight: 800;
             font-size: 23px;
+            font-weight: 800;
         }
 
         .brand-icon {
@@ -61,17 +61,16 @@
         }
 
         .nav-link {
-            color: #c8d2df !important;
+            color: #c7d2df !important;
             font-weight: 500;
             margin-left: 8px;
-            transition: 0.3s;
         }
 
         .nav-link:hover {
             color: var(--primary) !important;
         }
 
-        .nav-contact {
+        .login-nav {
             border: 1px solid rgba(32,217,196,0.4);
             border-radius: 10px;
             padding-left: 18px !important;
@@ -81,25 +80,24 @@
         /* HERO */
 
         .hero {
-            min-height: 650px;
+            min-height: 680px;
             display: flex;
             align-items: center;
             text-align: center;
             position: relative;
             overflow: hidden;
-        }
 
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: rgba(32,217,196,0.09);
-            filter: blur(100px);
-            border-radius: 50%;
-            left: 50%;
-            top: 30%;
-            transform: translate(-50%, -50%);
+            background:
+                radial-gradient(
+                    circle at 50% 40%,
+                    rgba(32,217,196,0.13),
+                    transparent 35%
+                ),
+                linear-gradient(
+                    180deg,
+                    #071321,
+                    #050b14
+                );
         }
 
         .hero-content {
@@ -109,27 +107,25 @@
 
         .badge-ai {
             display: inline-block;
-            padding: 8px 17px;
-            border: 1px solid rgba(32,217,196,0.3);
-            background: rgba(32,217,196,0.07);
-            color: var(--primary);
+            padding: 8px 18px;
             border-radius: 50px;
+            background: rgba(32,217,196,0.08);
+            border: 1px solid rgba(32,217,196,0.25);
+            color: var(--primary);
             font-size: 14px;
             font-weight: 600;
-            margin-bottom: 22px;
+            margin-bottom: 25px;
         }
 
         .hero h1 {
             font-size: clamp(42px, 7vw, 76px);
+            font-weight: 800;
             line-height: 1.05;
-            font-weight: 850;
             letter-spacing: -2px;
         }
 
         .hero h1 span {
-            background: linear-gradient(90deg, #20d9c4, #63e8d9);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--primary);
         }
 
         .hero p {
@@ -141,22 +137,22 @@
         }
 
         .hero-buttons {
-            margin-top: 30px;
+            margin-top: 32px;
         }
 
         .btn-main {
             background: var(--primary);
-            color: #03110f;
+            color: #03100e;
             border: none;
             border-radius: 12px;
-            padding: 13px 25px;
+            padding: 14px 27px;
             font-weight: 700;
             transition: 0.3s;
         }
 
         .btn-main:hover {
-            background: #55e7d6;
-            color: #03110f;
+            background: #55e8d8;
+            color: #03100e;
             transform: translateY(-2px);
         }
 
@@ -164,7 +160,7 @@
             border: 1px solid var(--border);
             color: white;
             border-radius: 12px;
-            padding: 13px 25px;
+            padding: 14px 27px;
             font-weight: 600;
             margin-left: 8px;
         }
@@ -174,52 +170,39 @@
             color: var(--primary);
         }
 
-        /* SEARCH */
+        /* STATS */
 
-        .search-wrapper {
-            max-width: 680px;
-            margin: 40px auto 0;
-            position: relative;
+        .stats {
+            margin-top: 55px;
         }
 
-        .search-wrapper i {
-            position: absolute;
-            left: 20px;
-            top: 16px;
-            color: #718197;
-            font-size: 19px;
+        .stat-box {
+            padding: 15px;
         }
 
-        .search-wrapper input {
-            width: 100%;
-            background: rgba(11,21,36,0.9);
-            border: 1px solid var(--border);
-            color: white;
-            border-radius: 14px;
-            padding: 16px 20px 16px 52px;
-            outline: none;
+        .stat-box h3 {
+            color: var(--primary);
+            font-size: 30px;
+            font-weight: 800;
+            margin: 0;
         }
 
-        .search-wrapper input:focus {
-            border-color: rgba(32,217,196,0.5);
-            box-shadow: 0 0 0 4px rgba(32,217,196,0.06);
+        .stat-box p {
+            font-size: 14px;
+            margin: 5px 0;
         }
 
-        .search-wrapper input::placeholder {
-            color: #718197;
-        }
-
-        /* TOOLS SECTION */
+        /* TOOLS */
 
         .tools-section {
-            padding: 80px 0;
+            padding: 90px 0;
         }
 
         .section-label {
             color: var(--primary);
-            font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            font-size: 13px;
             font-weight: 700;
         }
 
@@ -233,32 +216,23 @@
             color: var(--muted);
             max-width: 650px;
             margin: 15px auto 50px;
+            line-height: 1.7;
         }
 
-        /* CARDS */
+        /* TOOL CARD */
 
         .tool-card {
-            background:
-                linear-gradient(145deg, rgba(15,30,48,0.95), rgba(8,17,29,0.95));
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 30px;
             height: 100%;
-            transition: all 0.35s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tool-card::after {
-            content: "";
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            background: rgba(32,217,196,0.08);
-            border-radius: 50%;
-            right: -35px;
-            top: -35px;
-            filter: blur(5px);
+            padding: 30px;
+            border-radius: 20px;
+            background:
+                linear-gradient(
+                    145deg,
+                    #0d1c2e,
+                    #091321
+                );
+            border: 1px solid var(--border);
+            transition: 0.35s;
         }
 
         .tool-card:hover {
@@ -271,20 +245,18 @@
             width: 58px;
             height: 58px;
             display: flex;
-            align-items: center;
             justify-content: center;
-            background: rgba(32,217,196,0.08);
-            border: 1px solid rgba(32,217,196,0.15);
+            align-items: center;
             border-radius: 15px;
+            background: rgba(32,217,196,0.08);
             color: var(--primary);
             font-size: 27px;
-            margin-bottom: 23px;
+            margin-bottom: 22px;
         }
 
         .tool-card h3 {
             font-size: 22px;
             font-weight: 700;
-            margin-bottom: 12px;
         }
 
         .tool-card p {
@@ -294,41 +266,45 @@
         }
 
         .tool-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
             color: var(--primary);
             text-decoration: none;
             font-weight: 700;
-            margin-top: 10px;
         }
 
         .tool-link:hover {
             color: white;
         }
 
-        /* INFO SECTION */
+        /* CTA */
 
-        .info-section {
-            padding: 70px 0;
+        .cta {
+            padding: 80px 0;
         }
 
-        .info-box {
-            background: linear-gradient(145deg, #0d1b2d, #091321);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 55px 35px;
+        .cta-box {
+            padding: 60px 30px;
+            border-radius: 25px;
             text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(32,217,196,0.12),
+                    transparent 60%
+                ),
+                #0b1727;
+
+            border: 1px solid var(--border);
         }
 
-        .info-box h2 {
+        .cta-box h2 {
+            font-size: 40px;
             font-weight: 800;
-            font-size: 38px;
         }
 
-        .info-box p {
+        .cta-box p {
             color: var(--muted);
-            max-width: 700px;
+            max-width: 650px;
             margin: 18px auto 30px;
             line-height: 1.7;
         }
@@ -339,7 +315,6 @@
             background: #030811;
             border-top: 1px solid var(--border);
             padding: 45px 0 25px;
-            margin-top: 50px;
         }
 
         .footer-brand {
@@ -352,15 +327,14 @@
         }
 
         .footer-text {
-            color: #77879a;
-            margin-top: 12px;
+            color: #738398;
+            margin-top: 10px;
         }
 
         .footer-links a {
-            color: #8999aa;
+            color: #8b9aac;
             text-decoration: none;
             margin-left: 18px;
-            transition: 0.3s;
         }
 
         .footer-links a:hover {
@@ -371,16 +345,14 @@
             border-top: 1px solid var(--border);
             margin-top: 30px;
             padding-top: 20px;
-            color: #627184;
+            color: #5e6d7e;
             font-size: 14px;
         }
-
-        /* MOBILE */
 
         @media(max-width: 768px) {
 
             .hero {
-                min-height: 600px;
+                min-height: 620px;
             }
 
             .hero h1 {
@@ -418,20 +390,26 @@
     <div class="container">
 
         <a class="navbar-brand" href="index.html">
+
             <span class="brand-icon">
                 <i class="bi bi-stars"></i>
             </span>
+
             AI Tools Hub
+
         </a>
 
-        <button class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#mainNav">
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNav">
 
             <span class="navbar-toggler-icon"></span>
 
         </button>
+
 
         <div class="collapse navbar-collapse" id="mainNav">
 
@@ -456,8 +434,17 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link nav-contact" href="contact.html">
+                    <a class="nav-link" href="contact.html">
                         Contact
+                    </a>
+                </li>
+
+                <!-- LOGIN -->
+
+                <li class="nav-item">
+                    <a class="nav-link login-nav" href="login.html">
+                        <i class="bi bi-person-circle"></i>
+                        Login
                     </a>
                 </li>
 
@@ -477,47 +464,85 @@
     <div class="container hero-content">
 
         <div class="badge-ai">
+
             <i class="bi bi-stars"></i>
-            Powerful AI. Simple to Use.
+
+            Welcome to the Future of AI
+
         </div>
 
+
         <h1>
-            One Hub for
-            <span>Powerful AI Tools</span>
+
+            Powerful AI Tools.
+            <br>
+
+            <span>One Simple Hub.</span>
+
         </h1>
 
+
         <p>
-            Write better content, chat with AI, summarize information,
-            translate languages, generate code and discover new ideas —
-            all in one place.
+
+            Write content, chat with artificial intelligence,
+            summarize information, translate languages,
+            generate code and discover creative ideas —
+            all from one professional AI platform.
+
         </p>
+
 
         <div class="hero-buttons">
 
-            <a href="#tools" class="btn btn-main">
-                Explore AI Tools
+            <!-- GET STARTED -->
+
+            <a href="login.html" class="btn btn-main">
+
+                Get Started
+
                 <i class="bi bi-arrow-right"></i>
+
             </a>
 
-            <a href="about.html" class="btn btn-outline">
-                Learn More
+
+            <a href="#tools" class="btn btn-outline">
+
+                Explore Tools
+
             </a>
 
         </div>
 
 
-        <!-- SEARCH -->
+        <!-- STATS -->
 
-        <div class="search-wrapper">
+        <div class="row stats justify-content-center">
 
-            <i class="bi bi-search"></i>
+            <div class="col-4 col-md-2 stat-box">
 
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search for an AI tool..."
-                onkeyup="searchTools()"
-            >
+                <h3>6+</h3>
+
+                <p>AI Tools</p>
+
+            </div>
+
+
+            <div class="col-4 col-md-2 stat-box">
+
+                <h3>24/7</h3>
+
+                <p>Available</p>
+
+            </div>
+
+
+            <div class="col-4 col-md-2 stat-box">
+
+                <h3>AI</h3>
+
+                <p>Powered</p>
+
+            </div>
 
         </div>
 
@@ -535,44 +560,53 @@
         <div class="text-center">
 
             <div class="section-label">
-                Explore
+                AI Tools
             </div>
 
             <h2 class="section-title">
-                AI Tools Built for You
+                Everything You Need
             </h2>
 
             <p class="section-description">
-                Choose from our collection of AI-powered tools
-                designed to make your work faster and easier.
+
+                Explore our collection of AI-powered tools
+                designed to help students, creators, developers
+                and businesses work smarter.
+
             </p>
 
         </div>
 
 
-        <div class="row g-4" id="toolsContainer">
+        <div class="row g-4">
 
 
             <!-- CHAT -->
 
-            <div class="col-md-6 col-lg-4 tool-item">
+            <div class="col-md-6 col-lg-4">
 
                 <div class="tool-card">
 
                     <div class="tool-icon">
+
                         <i class="bi bi-chat-dots"></i>
+
                     </div>
 
                     <h3>AI Chat</h3>
 
                     <p>
-                        Ask questions, solve problems and have
-                        intelligent conversations with AI.
+
+                        Ask questions, solve problems and
+                        have intelligent conversations with AI.
+
                     </p>
 
                     <a href="ai-chat.html" class="tool-link">
+
                         Open Tool
                         <i class="bi bi-arrow-right"></i>
+
                     </a>
 
                 </div>
@@ -582,24 +616,30 @@
 
             <!-- WRITER -->
 
-            <div class="col-md-6 col-lg-4 tool-item">
+            <div class="col-md-6 col-lg-4">
 
                 <div class="tool-card">
 
                     <div class="tool-icon">
+
                         <i class="bi bi-pencil-square"></i>
+
                     </div>
 
                     <h3>AI Writer</h3>
 
                     <p>
+
                         Create professional articles, emails,
                         advertisements and social media content.
+
                     </p>
 
                     <a href="ai-writer.html" class="tool-link">
+
                         Open Tool
                         <i class="bi bi-arrow-right"></i>
+
                     </a>
 
                 </div>
@@ -609,24 +649,30 @@
 
             <!-- SUMMARIZER -->
 
-            <div class="col-md-6 col-lg-4 tool-item">
+            <div class="col-md-6 col-lg-4">
 
                 <div class="tool-card">
 
                     <div class="tool-icon">
+
                         <i class="bi bi-file-text"></i>
+
                     </div>
 
                     <h3>AI Summarizer</h3>
 
                     <p>
-                        Quickly turn long articles and text into
-                        simple, clear summaries.
+
+                        Turn long articles and text into
+                        short, clear and useful summaries.
+
                     </p>
 
                     <a href="ai-summarizer.html" class="tool-link">
+
                         Open Tool
                         <i class="bi bi-arrow-right"></i>
+
                     </a>
 
                 </div>
@@ -636,24 +682,30 @@
 
             <!-- TRANSLATOR -->
 
-            <div class="col-md-6 col-lg-4 tool-item">
+            <div class="col-md-6 col-lg-4">
 
                 <div class="tool-card">
 
                     <div class="tool-icon">
+
                         <i class="bi bi-translate"></i>
+
                     </div>
 
                     <h3>AI Translator</h3>
 
                     <p>
-                        Translate text between multiple languages
-                        including English, Urdu and Pashto.
+
+                        Translate text between multiple
+                        languages quickly with AI.
+
                     </p>
 
                     <a href="ai-translator.html" class="tool-link">
+
                         Open Tool
                         <i class="bi bi-arrow-right"></i>
+
                     </a>
 
                 </div>
@@ -663,24 +715,30 @@
 
             <!-- CODE -->
 
-            <div class="col-md-6 col-lg-4 tool-item">
+            <div class="col-md-6 col-lg-4">
 
                 <div class="tool-card">
 
                     <div class="tool-icon">
+
                         <i class="bi bi-code-slash"></i>
+
                     </div>
 
                     <h3>AI Code Generator</h3>
 
                     <p>
-                        Generate useful programming code with
-                        the help of artificial intelligence.
+
+                        Generate useful programming code
+                        using artificial intelligence.
+
                     </p>
 
                     <a href="ai-code-generator.html" class="tool-link">
+
                         Open Tool
                         <i class="bi bi-arrow-right"></i>
+
                     </a>
 
                 </div>
@@ -690,30 +748,35 @@
 
             <!-- IDEA -->
 
-            <div class="col-md-6 col-lg-4 tool-item">
+            <div class="col-md-6 col-lg-4">
 
                 <div class="tool-card">
 
                     <div class="tool-icon">
+
                         <i class="bi bi-lightbulb"></i>
+
                     </div>
 
                     <h3>AI Idea Generator</h3>
 
                     <p>
-                        Generate ideas for businesses, websites,
-                        apps, blogs, YouTube and projects.
+
+                        Generate ideas for websites, businesses,
+                        apps, blogs and projects.
+
                     </p>
 
                     <a href="ai-idea-generator.html" class="tool-link">
+
                         Open Tool
                         <i class="bi bi-arrow-right"></i>
+
                     </a>
 
                 </div>
 
             </div>
-
 
         </div>
 
@@ -722,32 +785,35 @@
 </section>
 
 
-<!-- INFO -->
+<!-- CTA -->
 
-<section class="info-section">
+<section class="cta">
 
     <div class="container">
 
-        <div class="info-box">
+        <div class="cta-box">
 
             <div class="section-label">
-                AI Tools Hub
+                Get Started
             </div>
 
             <h2>
-                Everything You Need in One Place
+                Ready to Explore AI?
             </h2>
 
             <p>
-                AI Tools Hub brings useful artificial intelligence
-                tools together in one simple platform. Whether you
-                are a student, developer, writer, business owner
-                or content creator, our tools can help you work
-                smarter and faster.
+
+                Create your account and start using
+                powerful AI tools from one simple platform.
+
             </p>
 
-            <a href="about.html" class="btn btn-main">
-                About AI Tools Hub
+            <a href="login.html" class="btn btn-main">
+
+                Create Account
+
+                <i class="bi bi-person-plus"></i>
+
             </a>
 
         </div>
@@ -768,12 +834,17 @@
             <div class="col-md-6">
 
                 <div class="footer-brand">
+
                     <i class="bi bi-stars"></i>
+
                     AI Tools <span>Hub</span>
+
                 </div>
 
                 <div class="footer-text">
+
                     Powerful AI tools for everyone.
+
                 </div>
 
             </div>
@@ -787,9 +858,7 @@
 
                 <a href="contact.html">Contact</a>
 
-                <a href="privacy.html">Privacy</a>
-
-                <a href="terms.html">Terms</a>
+                <a href="login.html">Login</a>
 
             </div>
 
@@ -807,45 +876,9 @@
 </footer>
 
 
-<!-- BOOTSTRAP JS -->
+<!-- Bootstrap JS -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
-<!-- SEARCH -->
-
-<script>
-
-function searchTools() {
-
-    const search =
-        document.getElementById("searchInput")
-        .value
-        .toLowerCase();
-
-    const tools =
-        document.querySelectorAll(".tool-item");
-
-    tools.forEach(function(tool) {
-
-        const text =
-            tool.innerText.toLowerCase();
-
-        if (text.includes(search)) {
-
-            tool.style.display = "";
-
-        } else {
-
-            tool.style.display = "none";
-
-        }
-
-    });
-
-}
-
-</script>
 
 </body>
 </html>
